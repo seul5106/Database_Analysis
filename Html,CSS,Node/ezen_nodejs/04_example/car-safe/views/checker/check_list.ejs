@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+  <head>
+    <title>Car Safety System</title>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, user-scalable=아니오"
+    />
+    <link rel="stylesheet" href="/assets/css/main.css" />
+    <script>
+      function car_list() {
+        location.href = "/checker/car_list/";
+      }
+      function main() {
+        location.href = "/main";
+      }
+    </script>
+  </head>
+
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+
+  <body class="is-preload" onload="menuload();">
+    <!-- Wrapper -->
+    <div id="wrapper">
+      <!-- Main -->
+      <div id="main">
+        <div class="inner">
+          <%- include ("../reference/header.ejs") %>
+
+          <!-- Content -->
+          <section>
+            <form method="post" action="/checker/confirm">
+              <header class="main">
+                <h1 id="check_list_header">체크리스트</h1>
+              </header>
+              <div id="check_list_division">
+                <span id="check_list_division1"
+                  >차량 번호:
+                  <input
+                    name="car_id"
+                    value="<%=carinfo[0].car_id%>"
+                    readonly />
+                  <strong></strong></span
+                ><span id="check_list_division2"
+                  >차량 소속:
+                  <input
+                    name="car_div"
+                    value="<%=carinfo[0].car_div%>"
+                    readonly />
+                  <strong></strong
+                ></span>
+              </div>
+              <br />
+              <div>
+                <table class="alt">
+                  <tr>
+                    <td id="check_list_TableHead1">check1</td>
+                    <td id="check_list_TableHead2">
+                      동일성 확인 부분
+                    </td>
+                    <td id="check_list_TableHead3">
+                      <input type="radio" id="check1" name="check1" value="t" checked/>
+                      <label for="check1" id="check_list_label">예</label>
+                      <input type="radio" id="check2" name="check1" value="f" />
+                      <label for="check2" id="check_list_label">아니오</label>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td id="check_list_TableHead1">check2</td>
+                    <td id="check_list_TableHead2">
+                      제원 측정 부분
+                    </td>
+                    <td id="check_list_TableHead3">
+                      <input type="radio" id="check3" name="check2" value="t" checked/>
+                      <label for="check3" id="check_list_label">예</label>
+                      <input type="radio" id="check4" name="check2" value="f" />
+                      <label for="check4" id="check_list_label">아니오</label>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td id="check_list_TableHead1">check3</td>
+                    <td id="check_list_TableHead2">
+                      원동기 부분
+                    </td>
+                    <td id="check_list_TableHead3">
+                      <input type="radio" id="check5" name="check3" value="t" checked/>
+                      <label for="check5" id="check_list_label">예</label>
+                      <input type="radio" id="check6" name="check3" value="f" />
+                      <label for="check6" id="check_list_label">아니오</label>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td id="check_list_TableHead1">check4</td>
+                    <td id="check_list_TableHead2">
+                      동력 전달 장치 부분
+                    </td>
+                    <td id="check_list_TableHead3">
+                      <input type="radio" id="check7" name="check4" value="t" checked/>
+                      <label for="check7" id="check_list_label">예</label>
+                      <input type="radio" id="check8" name="check4" value="f" />
+                      <label for="check8" id="check_list_label">아니오</label>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td id="check_list_TableHead1">check5</td>
+                    <td id="check_list_TableHead2">
+                      주행 장치 부분
+                    </td>
+                    <td id="check_list_TableHead3">
+                      <input type="radio" id="check9" name="check5" value="t" checked/>
+                      <label for="check9" id="check_list_label">예</label>
+                      <input type="radio" id="check10" name="check5" value="f"/>
+                      <label for="check10" id="check_list_label">아니오</label>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td id="check_list_TableHead1">check6</td>
+                    <td id="check_list_TableHead2">
+                      조정 장치 부분
+                    </td>
+                    <td id="check_list_TableHead3">
+                      <input type="radio" id="check11" name="check6" value="t" checked/>
+                      <label for="check11" id="check_list_label">예</label>
+                      <input type="radio" id="check12" name="check6" value="f" />
+                      <label for="check12" id="check_list_label">아니오</label>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td id="check_list_TableHead1">check7</td>
+                    <td id="check_list_TableHead2">
+                      조향 장치 부분
+                    </td>
+                    <td id="check_list_TableHead3">
+                      <input type="radio" id="check13" name="check7" value="t" checked/>
+                      <label for="check13" id="check_list_label">예</label>
+                      <input type="radio" id="check14" name="check7" value="f" />
+                      <label for="check14" id="check_list_label">아니오</label>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td id="check_list_TableHead1">check8</td>
+                    <td id="check_list_TableHead2">
+                      제동 장치 부분
+                    </td>
+                    <td id="check_list_TableHead3">
+                      <input type="radio" id="check15" name="check8" value="t" checked/>
+                      <label for="check15" id="check_list_label">예</label>
+                      <input type="radio" id="check16" name="check8" value="f" />
+                      <label for="check16" id="check_list_label">아니오</label>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td id="check_list_TableHead1">check9</td>
+                    <td id="check_list_TableHead2">
+                      완충 장치 부분
+                    </td>
+                    <td id="check_list_TableHead3">
+                      <input type="radio" id="check17" name="check9" value="t" checked/>
+                      <label for="check17" id="check_list_label">예</label>
+                      <input type="radio" id="check18" name="check9" value="f" />
+                      <label for="check18" id="check_list_label">아니오</label>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td id="check_list_TableHead1">check10</td>
+                    <td id="check_list_TableHead2">
+                      연료 장치 부분
+                    </td>
+                    <td id="check_list_TableHead3">
+                      <input type="radio" id="check19" name="check10" value="t" checked/>
+                      <label for="check19" id="check_list_label">예</label>
+                      <input type="radio" id="check20" name="check10" value="f"/>
+                      <label for="check20" id="check_list_label">아니오</label>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td id="check_list_TableHead1">check11</td>
+                    <td id="check_list_TableHead2">
+                      전기 및 전자 장치 부분
+                    </td>
+                    <td id="check_list_TableHead3">
+                      <input type="radio" id="check21" name="check11" value="t" checked/>
+                      <label for="check21" id="check_list_label">예</label>
+                      <input type="radio" id="check22" name="check11" value="f" />
+                      <label for="check22" id="check_list_label">아니오</label>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td id="check_list_TableHead1">check12</td>
+                    <td id="check_list_TableHead2">
+                      차체 및 차대 부분
+                    </td>
+                    <td id="check_list_TableHead3">
+                      <input type="radio" id="check23" name="check12" value="t" checked/>
+                      <label for="check23" id="check_list_label">예</label>
+                      <input type="radio" id="check24" name="check12" value="f" />
+                      <label for="check24" id="check_list_label">아니오</label>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td id="check_list_TableHead1">check13</td>
+                    <td id="check_list_TableHead2">
+                      연결 장치 및 견인 장치 부분
+                    </td>
+                    <td id="check_list_TableHead3">
+                      <input type="radio" id="check25" name="check13" value="t" checked/>
+                      <label for="check25" id="check_list_label">예</label>
+                      <input type="radio" id="check26" name="check13" value="f" />
+                      <label for="check26" id="check_list_label">아니오</label>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td id="check_list_TableHead1">check14</td>
+                    <td id="check_list_TableHead2">
+                      승차 장치 부분
+                    </td>
+                    <td id="check_list_TableHead3">
+                      <input type="radio" id="check27" name="check14" value="t" checked/>
+                      <label for="check27" id="check_list_label">예</label>
+                      <input type="radio" id="check28" name="check14" value="f" />
+                      <label for="check28" id="check_list_label">아니오</label>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td id="check_list_TableHead1">check15</td>
+                    <td id="check_list_TableHead2">
+                      물품 적재 장치 부분
+                    </td>
+                    <td id="check_list_TableHead3">
+                      <input type="radio" id="check29" name="check15" value="t" checked/>
+                      <label for="check29" id="check_list_label">예</label>
+                      <input type="radio" id="check30" name="check15" value="f"/>
+                      <label for="check30" id="check_list_label">아니오</label>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td id="check_list_TableHead1">check16</td>
+                    <td id="check_list_TableHead2">
+                      창유리 부분
+                    </td>
+                    <td id="check_list_TableHead3">
+                      <input type="radio" id="check31" name="check16" value="t" checked/>
+                      <label for="check31" id="check_list_label">예</label>
+                      <input type="radio" id="check32" name="check16" value="f" />
+                      <label for="check32" id="check_list_label">아니오</label>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td id="check_list_TableHead1">check17</td>
+                    <td id="check_list_TableHead2">
+                      배기가스 발산방지 및 소음방지 장치 부분
+                    </td>
+                    <td id="check_list_TableHead3">
+                      <input type="radio" id="check33" name="check17" value="t" checked/>
+                      <label for="check33" id="check_list_label">예</label>
+                      <input type="radio" id="check34" name="check17" value="f" />
+                      <label for="check34" id="check_list_label">아니오</label>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td id="check_list_TableHead1">check18</td>
+                    <td id="check_list_TableHead2">
+                      등화 장치 부분
+                    </td>
+                    <td id="check_list_TableHead3">
+                      <input type="radio" id="check35" name="check18" value="t" checked/>
+                      <label for="check35" id="check_list_label">예</label>
+                      <input type="radio" id="check36" name="check18" value="f" />
+                      <label for="check36" id="check_list_label">아니오</label>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td id="check_list_TableHead1">check19</td>
+                    <td id="check_list_TableHead2">
+                      경음기 및 경보 장치 부분
+                    </td>
+                    <td id="check_list_TableHead3">
+                      <input type="radio" id="check37" name="check19" value="t" checked/>
+                      <label for="check37" id="check_list_label">예</label>
+                      <input type="radio" id="check38" name="check19" value="f" />
+                      <label for="check38" id="check_list_label">아니오</label>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td id="check_list_TableHead1">check20</td>
+                    <td id="check_list_TableHead2">
+                      시야확보 장치 부분
+                    </td>
+                    <td id="check_list_TableHead3">
+                      <input type="radio" id="check39" name="check20" value="t" checked/>
+                      <label for="check39" id="check_list_label">예</label>
+                      <input type="radio" id="check40" name="check20" value="f"/>
+                      <label for="check40" id="check_list_label">아니오</label>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td id="check_list_TableHead1">check21</td>
+                    <td id="check_list_TableHead2">
+                      계기 장치 부분
+                    </td>
+                    <td id="check_list_TableHead3">
+                      <input type="radio" id="check41" name="check21" value="t" checked/>
+                      <label for="check41" id="check_list_label">예</label>
+                      <input type="radio" id="check42" name="check21" value="f" />
+                      <label for="check42" id="check_list_label">아니오</label>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td id="check_list_TableHead1">check22</td>
+                    <td id="check_list_TableHead2">
+                      소화기 및 방화 장치 부분
+                    </td>
+                    <td id="check_list_TableHead3">
+                      <input type="radio" id="check43" name="check22" value="t" checked/>
+                      <label for="check43" id="check_list_label">예</label>
+                      <input type="radio" id="check44" name="check22" value="f" />
+                      <label for="check44" id="check_list_label">아니오</label>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td id="check_list_TableHead1">check23</td>
+                    <td id="check_list_TableHead2">
+                      내압용기 부분
+                    </td>
+                    <td id="check_list_TableHead3">
+                      <input type="radio" id="check45" name="check23" value="t" checked/>
+                      <label for="check45" id="check_list_label">예</label>
+                      <input type="radio" id="check46" name="check23" value="f" />
+                      <label for="check46" id="check_list_label">아니오</label>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+              <div class="col-12">
+                <textarea
+                  name="checketc"
+                  id="check_list_massage"
+                  placeholder="기타 사항"
+                  rows="10"
+                ></textarea>
+              </div>
+              <br />
+              <br />
+              <div id="check_list_button">
+                <ul class="actions">
+                  <li>
+                    <a
+                      class="button primary"
+                      id="check_list_button_ft"
+                      onclick="car_list()"
+                      >목록</a
+                    >
+                  </li>
+                  <li>
+                    <button
+                      type="submit"
+                      class="button"
+                      id="check_list_button_ft"
+                    >
+                      확인
+                    </button>
+                  </li>
+                </ul>
+              </div>
+            </form>
+          </section>
+        </div>
+      </div>
+
+      <%- include ("../reference/sidebar.ejs") %>
+    </div>
+
+  </body>
+</html>

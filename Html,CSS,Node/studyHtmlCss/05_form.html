@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <input class="input-data" type="text" />
+
+    <select class="select">
+        <optgroup label="coffee">
+            <option>coffee</option>
+            <option>tea</option>
+            <option>late</option>
+            <option>gitr</option>
+        </optgroup>
+    </select>
+
+    <input type="radio" class="radio" name="gender" value="male">남
+    <input type="radio" class="radio" name="gender" value="female">여
+
+    <button class="btn">submit</button>
+
+    <script>
+        document.querySelector(".btn").addEventListener("click", e => {
+            let inputData = document.querySelector(".input-data").value;
+            let selectData = document.querySelector(".select").value;
+            let radioData = document.querySelector("input[name=gender]:checked").value;
+            
+            
+
+            alert(inputData + " " + selectData + " " + radioData);
+        })
+    </script>
+</body>
+
+</html>

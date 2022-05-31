@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script>
+            function Ajax(){
+                $.ajax({
+                    url : "/ajax",
+                    data : {
+                        name : "moon",
+                        phone : "01053869303",
+                        division : "kairos-link"
+                    },
+                    method : "GET",
+                    datatype : "json"
+                })
+                .done(function(result){                     
+                    /*.ajax -> 연결이 성공 -> index.js ( /ajax get ) 결과값 보내주면 -> function(result) -> result : {
+                                                                                                                    name : name,
+                                                                                                                    html : phone + "<br>" + division
+                                                                                                                }
+                    */
+                    $("<h1>").text(result.name).appendTo("body");
+                    $("<div>").html(result.html).appendTo("body");
+                })
+                .fail(function(xhr, status, error){
+                    /*
+                        오류 처리 -> url이 존재하지 않을때 에러 fail 작동하지 않아요
+                        fail 인터넷에 연결자체에 문제가 있을때 fail 작동 
+                    */
+                    $("#text").html("오류가 발생했다.<br>")
+                    .append("오류 : " + error + "<br>")
+                    .append("상태 : " + status)
+                })
+                .always(function(xhr, status){
+                    /*
+                        fail이 작동하지 않을 때
+                    */
+                    $("#text").html("요청이 완료");
+                })
+            }
+            function Ajax_post(){
+                $.ajax({
+                    url : "/ajax",
+                    data : {
+                        message : "코로나가 너무 싫다"
+                    },
+                    method : "POST",
+                    datatype : "json"
+                })
+                .done(function(json){
+                    $("<b>").html(json.message).appendTo("body");
+                })
+                .fail(function(xhr, status, error){
+                    $("#text").html("오류가 발생했다.<br>")
+                    .append("오류 : " + error + "<br>")
+                    .append("상태 : " + status)
+                })
+                .always(function(xhr, status){
+                    $("#text").html("요청이 완료");
+                })
+            }
+            function get(){
+                /*
+                    $.get(url, data, function) 문법
+                    ajax의 경우 : function(result)  -> result : index.js 보내주는 결과값
+                    .get function(result, status) -> result : index.js 보내주는 결과값
+                                                   status : 연결의 성공 유무
+                */
+                $.get("/ajax_get",
+                    {
+                        name : "moon",
+                        phone : "01053869303",
+                        division : "kairos-link"
+                    },
+                    function(data, status){
+                        $("#text").html(data);   
+                        $("#message").html(status);    
+                    }
+                )
+            }
+            function post(){
+                $.post("/ajax_post",
+                {
+                    name : "moon"
+                },
+                function(data, status){
+                    $("#text").html(data + "<br>" + status);    
+                })
+            }
+            function getJSON(){
+                /*
+                    $.getJSON(url, data, function(result))
+                    function(result) -> result : index.js 보내주는 값(json) -> result : {name : name , phone : phone , disivion : disivion}
+                */
+                var post_id = $("#post_id").val()
+                $.getJSON("/ajax_getJSON", 
+                {
+                    "post_id" : post_id
+                },
+                function(data){
+                    $("#text").html(data.state);
+                    $("#message").html(data.message);
+                })
+            }
+        </script>
+    </head>
+    <body>
+        <button onclick="Ajax()">Ajax Test</button>
+        <button onclick="Ajax_post()">Ajax_post Test</button>
+        <button onclick="get()">get Test</button>
+        <button onclick="post()">post Test</button>
+        <input type="text" id="post_id" placeholder="ID">
+        <button onclick="getJSON()">getSJON Test</button>
+        <h1 id="text"></h1>
+        <p id ="message"></p>
+    </body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script>
+            setInterval(function(){
+                
+                        /*
+                            main.js data 보내는게 result
+                            result = {
+                                            result : [{
+                                                    No : xxxx,
+                                                    name : xxxx,
+                                                    address : xxxx,
+                                                    temp : xxxx,
+                                                    hud : xxxx,
+                                                    date : xxxx,
+                                                    time : xxxx
+                                                },
+                                                {},
+                                                {},
+                                                {}]
+                                        }
+                            result.result = [{
+                                                No : xxxx,
+                                                name : xxxx,
+                                                address : xxxx,
+                                                temp : xxxx,
+                                                hud : xxxx,
+                                                date : xxxx,
+                                                time : xxxx
+                                            },{},{},{}]
+                            result.result[0] = {
+                                                No : xxxx,
+                                                name : xxxx,
+                                                address : xxxx,
+                                                temp : xxxx,
+                                                hud : xxxx,
+                                                date : xxxx,
+                                                time : xxxx
+                                            }
+                            result.result[0].name = xxxx
+
+                            +=의 의미? -> A -= B -> A = A - B
+                        */
+                $.getJSON(
+                    "/moniter",
+                    function(result){
+                        var head = `<table class="table">
+                                        <tr>
+                                            <th>No</th>
+                                            <th>농장 이름</th>
+                                            <th>농장 주소</th>
+                                            <th>온도</th>
+                                            <th>습도</th>
+                                            <th>날짜</th>
+                                            <th>시간</th>
+                                        </tr>`;
+                        var footer = `</table>`;
+                        var body= "";
+                        for(var i = 0; i < result.result.length; i++){
+                            body += `<tr onclick="location.href='/history?farm_name=`+result.result[i].name+`'">
+                                        <td>`+result.result[i].No+`</td>
+                                        <td>`+result.result[i].name+`</td>
+                                        <td>`+result.result[i].address+`</td>
+                                        <td>`+result.result[i].temp+`</td>
+                                        <td>`+result.result[i].hud+`</td>
+                                        <td>`+result.result[i].date+`</td>
+                                        <td>`+result.result[i].time+`</td>
+                                    </tr>`;
+                        }
+                        $("#moniter").html(head+body+footer)
+                    }
+                ) 
+            }, 1000);                                                                     
+        </script>
+    </head>
+    <body>
+        <div id="moniter"></div>
+    </body>
+</html>

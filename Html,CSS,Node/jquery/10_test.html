@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jquery</title>
+    <!--Jquery CDN 자동으로 가장 최신버전을 불러온다-->
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <style>
+      p{
+          margin: 4px;
+          font-size: 16px;
+          font-weight: bolder;
+          cursor: pointer;
+      }
+
+      .blue{
+          color:blue;
+      }
+
+      .highlight{
+          background-color: yellow;
+      }
+    </style>
+</head>
+<body>
+    <p class = "blue">Click to toggle</p>
+    <p class = "blue highlight">Highlight</p>
+    <p class = "blue">text</p>
+    <p class = "blue">text2</p>
+    <script>
+       $("p").click(function(){
+           $(this).toggleClass("highlight");
+       })
+    </script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajax</title>
+    <!--Jquery CDN 자동으로 가장 최신버전을 불러온다-->
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <style>
+        .content{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <button onclick="ajax()">ajax구동</button>
+    <p id="text"></p>
+    <script>
+        const ajax = ()=>{
+            $.ajax({
+                url : "/ajax",
+                data : { name : "test"},
+                method : "get",
+                dataType : "json"
+            }).done((json)=>{
+                $("<h1>").text(json.title).appendTo("body");
+                $("<div class='content'>").html(json.html).appendTo("body");
+            }).fail((xhr, status, errorThrown)=>{
+                $("#text").html("에러 발생 : " + errorThrown)
+            }).always((xhr, status)=>{
+                $("#text").html("요청이 완료되었습니다. ");
+            });
+        }
+    </script>
+</body>
+</html>

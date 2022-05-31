@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+        <script>
+            function info(no){
+                location.href = "/board/info?No="+no;
+            }
+        </script>
+    </head>
+    <body>
+        <div class="container">
+            <div align="right">
+                <button class="btn-primary" onclick="location.href='/board/write'">글 쓰기</button>
+            </div>
+            <table class="table table-dark table-striped">
+                <tr>
+                    <th>글 번호</th>
+                    <th>글 제목</th>
+                    <th>작성자</th>
+                    <th>작성 시간</th>
+                    <!-- <td rowspan="2">
+                        rospan
+                    </td> -->
+                </tr>
+                <!--
+                    board = 
+                    [
+                        { No: 1, title: '제목1', name: 'ezen', time: '20210720173738' },
+                        { No: 2, title: '제목2', name: 'ezen', time: '20210720175825' } 
+                    ]
+                    for문  -> for(var i = 0; i < number; i++)
+                -->
+                <%if(board.length == 0){%>
+                    <tr>
+                        <td colspan="4" align="center">
+                            해당 게시판에 글이 존재 하지 않습니다.
+                        </td>
+                    </tr>
+                <%}else{
+                    for(var i = 0; i < board.length; i++){%>
+                        <tr onclick="info('<%=board[i].No%>')" style="cursor: pointer;">
+                            <td><%=board[i].No%></td>
+                            <td><%=board[i].title%></td>
+                            <td><%=board[i].name%></td>
+                            <td><%=board[i].time%></td>
+                        </tr>
+                    <%}
+                }%>
+            </table>
+        </div>
+    </body>
+</html>

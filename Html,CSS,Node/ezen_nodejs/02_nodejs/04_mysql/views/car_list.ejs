@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script>
+            function popup(message){
+                location.href = "/manager/search?car_id="+message;
+            }
+        </script>
+    </head>
+    <body>
+        <table border="1">
+            <tr>
+                <th>차량 번호</th>
+            </tr>
+            <%for(var i = 0; i < car.length; i++){%>
+                <tr onclick="popup('<%=car[i].car_id%>')">
+                    <td><%=car[i].car_id%></td>
+                </tr>
+            <%}%>
+        </table>
+    </body>
+</html>

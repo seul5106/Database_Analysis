@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script>
+            $(function() {
+              $("ul.foo").click(function(){     //ul태그중 foo라는 클래스를 가진 태그를 클릭하면
+                  $('li', this).css('background-color', 'red'); //this?? 자기 자신... 클릭한 태그
+              })
+              });
+        </script>
+    </head>
+    <body>
+        <ul>
+            <li>
+                test
+            </li>
+        </ul>
+        <ul class="foo">
+            <li>
+                test2
+            </li>
+            <p>123456789</p>
+        </ul>
+    </body>
+</html>

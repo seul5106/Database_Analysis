@@ -1,0 +1,31 @@
+<!-- http://api.jquery.com/wrap/ -->
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            div {
+                border:2px blue solid;
+                margin:2px;
+                padding:2px;
+            }
+            p {
+                background:yellow;
+                margin:2px;
+                padding:2px;
+            }
+            strong {
+                color:red;
+            }
+            .test {
+                background-color: green;
+            }
+        </style>
+        <script src="http://code.jquery.com/jquery-latest.js"></script>
+    </head>
+    <body>
+        <span class="test">Span Text</span>
+        <strong class="test">What about me?</strong>
+        <span>Another One</span>
+        <script>$("span.test").wrap("<div><div><div><p><em><b></b></em></p></div></div></div>");</script>
+    </body>
+</html>

@@ -1,0 +1,19 @@
+$number: 80px;
+$commW: 300px;
+
+
+.box {
+    background-color: darksalmon;
+    h2{
+        color: blue;
+    }
+    margin-left: $number;
+    width: $commW;
+}
+
+.box {
+    h3{
+        color: green;
+    }
+}
+

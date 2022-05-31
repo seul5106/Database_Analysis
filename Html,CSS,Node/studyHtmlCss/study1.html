@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>study1</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" />
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <style>
+        .container {
+            width: 100%;
+            height: 100%;
+            background-color: #000;
+        }
+
+        .content {
+            text-align: center;
+            margin: 0 auto;
+            width: 300px;
+            height: 800px;
+            background-color: #eee;
+        }
+
+        .title {
+            position: relative;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            font-size: 50px;
+        }
+
+        .btnContainer {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .btn {
+            margin: 5px;
+            display: block;
+            justify-content: center;
+            align-items: center;
+
+            border-radius: 1px solid #000;
+            cursor: pointer;
+            width: 80px;
+            height: 30px;
+            background-color: rgb(185, 185, 185);
+        }
+
+        .btn:active {
+            background-color: rgb(240, 240, 240);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="content">
+            <div class="btnContainer">
+                <button class="btn btn1">button1</button>
+                <button class="btn btn2">button2</button>
+                <button class="btn btn3">button3</button>
+            </div>
+            <div class="title">Hello World</div>
+        </div>
+    </div>
+</body>
+<script>
+    document.querySelector(".title").addEventListener("click", e => {
+        Swal.fire({
+            title: 'Hello World',
+            icon: 'question',
+            iconHtml: 'Hi',
+            confirmButtonText: 'confirm',
+            cancelButtonText: 'cancle',
+            showCancelButton: true,
+            showCloseButton: true
+        })
+    });
+
+    let array = document.querySelectorAll(".btn")
+    for (key of array) {
+        key.addEventListener("click", e => {
+            Swal.fire({
+                title: 'btn',
+                icon: 'success',
+                confirmButtonText: 'confirm',
+                cancelButtonText: 'cancle',
+                showCancelButton: true,
+                showCloseButton: true
+            })
+        })
+    }
+</script>
+
+</html>

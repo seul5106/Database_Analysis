@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            html, body {
+                margin: 0px;
+                padding : 0px;
+                width : 100%;
+                height : 100%;
+            }
+            .box{
+                width:100%;
+                height:100%;
+                position: relative;
+                color: white;
+                font-size : 30px;
+            }
+        </style>
+        <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+        <script>
+            jQuery(document).on("ready",function(){
+
+                jQuery(".box").each(function(){
+
+                    jQuery(this).on("mousewheel DOMMouseScroll", function(event){
+                        var delta = 0;
+                        var moveTop = null;
+                        var boxMax = jQuery(".box").length -1;
+                        var winEvent = window.event;
+                        console.log(boxMax);
+
+                        if(winEvent.wheelDelta){
+                            delta = winEvent.wheelDelta / 120;
+                            if(window.opera) {
+                                delta = -delta;
+                            }
+                        }else if(winEvent.detail){
+                            delta = -winEvent.detail / 3;
+                        }
+
+                        if(delta < 0){
+                            if(jQuery(this).index() < boxMax){
+                                console.log("▼")
+                                if(jQuery(this).next() != undefined){
+                                    moveTop = jQuery(this).next().offset().top;
+                                    //현재 박스 다음의 박스에 높이 값을 지정
+                                }
+                            }else{
+                                alert("마지막 페이지")
+                                return false;
+                            }
+                        }else{
+                            if(jQuery(this).index() > 0){
+                                console.log("▲")
+                                if(jQuery(this).prev() != undefined){
+                                    moveTop = jQuery(this).prev().offset().top;
+                                    //현재 박스 전의 박스의 높이 값을 지정
+                                }
+                            }else{
+                                alert("첫 페이지");
+                                return false;
+                            }
+                        }
+                        
+                        jQuery("html,body").stop().animate({
+                            scrollTop : moveTop + "px"
+                        },
+                        {
+                            duration : 1000,
+                            complete : function(){
+
+                            }
+                        })
+                    })
+                })
+            })
+        </script>
+    </head>
+    <body>
+        <div class="box" style="background-color: red;">1</div>
+        <div class="box" style="background-color: orange;">2</div>
+        <div class="box" style="background-color: yellow;">3</div>
+        <div class="box" style="background-color: green;">4</div>
+        <div class="box" style="background-color: blue;">5</div>
+        <div class="box" style="background-color: navy;">6</div>
+        <div class="box" style="background-color: purple;">7</div>
+    </body>
+</html>

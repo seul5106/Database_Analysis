@@ -1,0 +1,15 @@
+{
+    "keep": {
+        "days": false,
+        "amount": 50
+    },
+    "auditLog": "C:\\Users\\seul5\\Html-Css\\studyHtmlCss\\express-server\\_files\\_logs\\.200a53275bfab5541dec383c6817c93cb55bc5a9-audit.json",
+    "files": [
+        {
+            "date": 1653467730190,
+            "name": "C:\\Users\\seul5\\Html-Css\\studyHtmlCss\\express-server\\_files\\_logs\\log_220525.log",
+            "hash": "22f7b8428203c64c3979575228e23749"
+        }
+    ],
+    "hashType": "md5"
+}

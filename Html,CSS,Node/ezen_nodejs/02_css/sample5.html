@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            .jb{
+                box-sizing: border-box;
+                width: 64px;
+                height : 64px;
+                margin : 10px, 0px;
+                background-color: yellow;
+            }
+            input:checked ~ .jb{
+                width : 100%;
+                background-color: chocolate;
+            }
+            .jb1{
+                transition-duration: 1s;
+            }
+            .jb2{
+                transition-duration: 400ms;
+            }
+        </style>
+    </head>
+    <body>
+        <input type="checkbox">
+        <p>duration : 1s</p>
+        <div class="jb jb1"></div>
+        <p>duration : 400ms</p>
+        <div class="jb jb2"></div>
+    </body>
+</html>

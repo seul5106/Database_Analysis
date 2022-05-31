@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    </head>
+    <body>
+        <button id="bt1">Ajax_get</button>
+        <button id="bt2">.get</button>
+        <script>
+            $("#bt1").click(function(){             //id = bt1을 클릭 할 때
+                $.ajax({
+                    url : "/ajax_get",
+                    data : {
+                        message : "오늘 날씨가 너무 덥다"
+                    },
+                    method : "GET",
+                    dataType : "json"
+                })
+                .done(function(result){             //요청이 성공을 하고 result -> 서버에서 받아온 데이터 값
+                    alert(result.message);
+                })
+                .fail(function(xhr, status, error){ //요청이 실패하면 
+                    alert(xhr);
+                })
+                .always(function(xhr, status){
+                    $('body').append("요청이 완료되었습니다.")
+                })
+            })
+            $("#bt2").click(function(){
+                //.get(url, data, function)
+                $.get("/get",
+                    {
+                        message : "여행 가고싶다",
+                        message2 : "근데 확진자가 1800명이래 ㅠㅠ"
+                    },
+                    function(result, status){
+                        $("body").append(result);
+                        $("body").append(status);
+                    }
+                )
+            })
+        </script>
+        <button id="bt3">.post</button>
+        <script>
+            //.get .poet (url, data, function)
+            $("#bt3").click(function(){
+                $.post("/post",
+                    {
+                        message : "너무 피곤해요"
+                    },
+                    function(result, status){
+                        $("body").append(result);
+                        $("body").append(status);
+                    }
+                )
+            })
+        </script>
+        <button id="bt4">getJSON</button>
+        <p></p>
+        <script>
+            $("#bt4").click(function(){
+                //getJSON(url, data, function)
+                $.getJSON("/getJSON",
+                    {
+                        post_id : "test2",
+                        password : "1234"
+                    },
+                    function(result, status){
+                        $("p").text(result.check);
+                    }
+                )
+            })
+        </script>
+    </body>
+</html>

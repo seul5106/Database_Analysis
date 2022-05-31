@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            .jb{
+                box-sizing: border-box;
+                width : 64px;
+                height : 64px;
+                margin : 10px, 0px;
+                background-color: yellow;
+                transition-duration: 4s;
+            }
+            input:checked ~ .jb{
+                width : 100%;
+                border-radius: 20px;
+                background-color: teal;
+            }
+            .jb1{
+                transition-property: all;
+            }
+            .jb2{
+                transition-property: width, background-color;
+            }
+        </style>
+    </head>
+    <body>
+        <input type="checkbox">
+        <p>tarnsition-property : all</p>
+        <div class = "jb jb1"></div>
+        <p>transition-property : property</p>
+        <div class = "jb jb2"></div>
+    </body>
+</html>

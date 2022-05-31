@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            *{
+                margin : 0;
+                padding : 0;
+                list-style: none;
+            }
+            .slideWrap {
+                width : 640px;
+                height : 400px;
+                border : 5px solid black;
+                overflow: hidden;
+                position : relative;
+                margin : 0 auto;
+            }
+            .slide {
+                height : 100%;
+                position: absolute;
+                background-color: darkblue;
+            }
+            .slide ul {
+                display: inline;
+            }
+            .slide li {
+                float: left;
+                width : 640px;
+                height : 100%;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="slideWrap">
+            <ul class="slide">
+                <li><img src="./1.jpg"></li>
+                <li><img src="./2.jpg"></li>
+                <li><img src="./3.jpg"></li>
+            </ul>
+        </div>
+
+        <script>
+            var ul = document.querySelector('.slide');
+            var slideNumber = document.querySelector(".slide").childElementCount;
+            var firstItemClone = ul.firstElementChild.cloneNode(true);
+            ul.append(firstItemClone);
+            ul.style.width = (slideNumber + 1) * 640 + 'px';
+            function move(){
+                var i = 0;
+                setInterval(function(){
+                    ul.style.transition = '0.5s';
+                    ul.style.transform = 'translate3d(-'+640*(i+1)+'px, 0px, 0px)';
+                    i++;
+                    if(i == slideNumber){
+                        setTimeout(function(){
+                            ul.style.transition = "0s";
+                            ul.style.transform = "translate3d(0px, 0px, 0px)"
+                        }, 500)
+                        i = 0;
+                    }
+                }, 1000);
+            }
+            document.addEventListener("DOMContentLoaded", function(){
+                move();
+            })
+        </script>
+    </body>
+</html>

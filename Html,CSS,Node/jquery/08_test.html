@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jquery</title>
+    <!--Jquery CDN 자동으로 가장 최신버전을 불러온다-->
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <style>
+        p{
+            background-color: yellow;
+            margin: 6px 0;
+        }
+
+        button:active{
+            border: 1px solid red;
+            background-color: #eee;
+        }
+    </style>
+</head>
+<body>
+    <P>Hello</P>
+    how are
+    <p>
+        you?
+    </p>
+    <button>
+        Call remove
+    </button>
+
+    <script>
+        $("button").click( function () {
+            $("p").remove();
+        })
+    </script>
+</body>
+</html>

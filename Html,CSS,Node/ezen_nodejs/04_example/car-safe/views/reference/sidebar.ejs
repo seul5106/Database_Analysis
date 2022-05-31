@@ -1,0 +1,50 @@
+<script language="javascript">
+  function logout() {
+    location.href = "/logout";
+  }
+  function info() {
+    location.href = "/info";
+  }
+
+</script>
+<!-- Sidebar -->
+<div id="sidebar">
+  <div class="inner">
+
+    <!-- Menu -->
+    <nav id="menu">
+      <header class='major'><h2>User</h2></header>환영합니다!<br /><br />
+      <div>
+        이름 : <%=userlist.name%>
+        <br /><br />
+        소속 : <%=userlist.division%>
+        <br /><br />
+        <button type="button" id="logOutButton" onclick="info()">
+          내 정보
+        </button>
+        <br /><br />
+        <button type="button" id="logOutButton" onclick="logout()">
+          log out
+        </button>
+      </div>
+    </nav>
+    <!-- Footer -->
+    <footer id="footer">
+      <section>
+        <ul class="contact">
+          <li class="icon solid fa-envelope">
+            ekflafg@gmail.com
+          </li>
+          <li class="icon solid fa-phone">010-5386-9303</li>
+          <li class="icon solid fa-home">
+            서울특별시 중랑구 신내로 211
+            <br />338호
+          </li>
+        </ul>
+      </section>
+      <p class="copyright">
+        &copy; International 2021
+      </p>
+    </footer>
+  </div>
+</div>

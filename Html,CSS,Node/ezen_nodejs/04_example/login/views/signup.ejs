@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script>
+            $(function(){
+                $("#signup_box").hide();
+                $("input").keyup(function(){
+                    var pass1 = $("#input_password").val();     //id가 input_password인 태그의 값 (keyup을 할때마다)
+                    var pass2 = $("#confirm_password").val();
+                    if(pass1 && pass2){
+                        if(pass1 == pass2){
+                            $("#pass").text("비밀번호 일치")
+                            $("#signup").removeAttr("disabled")
+                        }else{
+                            $("#pass").text("비밀번호 불일치")
+                            $("#signup").attr("disabled", "disabled")
+                        }
+                    }
+                })
+            })
+        </script>
+    </head>
+    <body>
+        <!--
+            회원 가입 페이지
+            ID
+            PASSWORD
+            NAME
+            회원가입 버튼 ->
+            DataBase ID -> 유일성 -> ID가 DB에 존재하면 아이디가 중복이라고 표시
+            존재하지 않으면 회원가입 성공 -> DB insert
+            {
+                key(input name) : value(input value),
+                key2(input2 name) : value2(input2 value)
+            }
+        -->
+        <form action="/signup" method="POST">
+            <div id="id_box">
+                <input type="text" placeholder="ID" name="id" id="post_id">
+            </div>
+            <div id="check_button">id check</div>
+            <p id="id_check"></p>
+            <div id="signup_box">
+                <input type="password" placeholder="Password" name="password" id="input_password">
+                <input type="password" placeholder="confirm Password" id="confirm_password">
+                <p id="pass"></p>
+                <input type="text" placeholder="Name" name="name">
+                <input type="submit" value="회원가입" id="signup" disabled>
+            </div>
+        </form>
+        <script>
+            $("#check_button").click(function(){
+                var post_id = $("#post_id").val();
+                $.get(
+                    "/check_id",
+                    {
+                        id : post_id
+                    },
+                    function(result, status){
+                        if(result == "0"){
+                            $("#signup_box").show()
+                            $("<p name='id'>"+post_id+"</p>").replaceAll("#post_id");
+                        }
+                    }
+                )
+            })
+        </script>
+    </body>
+</html>

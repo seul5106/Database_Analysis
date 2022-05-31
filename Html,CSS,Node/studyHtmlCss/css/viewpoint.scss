@@ -1,0 +1,48 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.box {
+    margin: 0 auto;
+    width: 400px;
+    height: 400px;
+    background-color:#eee;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+
+    .box1 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 50vmin;
+        height: 50vmin;
+        background-color: red;
+
+        &:hover{
+            width:50%;
+            height: 50%;
+            transition: ease-in-out 0.5s ;
+            transition-delay: 0.5s;
+            border-radius: 20px;
+            font-size: 40px;
+        }
+        &:first-child{
+            -webkit-transition: 0.5s;
+            transition: 0.5s;
+        }
+    }
+
+    .box2 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 20vmax;
+        height: 20vmax;
+        background-color: green;
+    }
+
+
+}
+

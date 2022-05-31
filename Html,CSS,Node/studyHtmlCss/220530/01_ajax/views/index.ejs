@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!--axios-->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <!--Jquery CDN 자동으로 가장 최신버전을 불러온다-->
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <!--Sweert Alert-->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+
+<body>
+    <button class="btn">Ajax구동(axios)</button>
+
+    <p class="p"></p>
+    <script>
+        const ajax = () => {
+            $.ajax({
+                url: "/ajax",
+                data: { message: "server connect?" },
+                method: "POST",
+                dataType: "json"
+            }).done((result) => {
+                alert(result.answer)
+            }).fail((xhr, status, errorThrown) => {
+                Swal.fire(errorThrown);
+            }).always((xhr, status) => {
+                Swal.fire("Ajax요청 완료");
+            });
+        }
+
+        const get = ()=> {
+            $.get(
+                "/ajax_get",
+                {
+                    message: "get connect?"
+                },
+                (result, status)=>{
+                    alert(result)
+                }
+            );
+        }
+
+        const getJSON = ()=>{
+            $.getJSON(
+                "/ajax_getjson",
+                {
+                    message: "getJSON connect?"
+                },
+                (result, status)=> {
+                    alert(result.answer);
+                    if(status == "success"){
+                        let msg = "구현성공"
+                        alert(msg)
+                    }else{
+                        alert("구현에러")
+                    }
+                }
+            );
+        }
+    </script>
+    <button onclick="ajax()">Ajax구동(Jquery)</button>
+    <button onclick="get()">GET구동(Jquery2)</button>
+    <button onclick="getJSON()">getJSON</button>
+    <script>
+        document.querySelector(".btn").addEventListener("click", e => {
+            (async () => {
+                let json = null;
+                try {
+                    const response = await axios.get("/ajax2");
+                    json = response;
+
+                } catch (error) {
+                    const errorMsg = "[" + error.response.status + "] " + error.response.statusText;
+                    console.log(errorMsg);
+                    return;
+                }
+                console.log(json.data)
+                document.querySelector(".p").innerHTML = json.data.html + json.data.title;
+            })();
+        });
+    </script>
+</body>
+
+</html>

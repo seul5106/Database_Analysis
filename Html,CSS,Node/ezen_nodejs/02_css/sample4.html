@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            .jb{
+                box-sizing: border-box;
+                width : 64px;
+                height : 64px;
+                margin : 10px, 0px;
+                background-color: yellow;
+                transition-property: all;
+                transition-duration: 4s;
+            }
+            input:checked ~ .jb{
+                width : 100%;
+                background-color: violet;
+            }
+            .jb1{
+                transition-timing-function: steps(8, start);
+            }
+            .jb2{
+                transition-timing-function: steps(8, end);
+            }
+        </style>
+    </head>
+    <body>
+        <input type="checkbox">
+        <p>steps(4, start)</p>
+        <div class="jb jb1"></div>
+        <p>steps(4, end)</p>
+        <div class="jb jb2"></div>
+    </body>
+</html>
