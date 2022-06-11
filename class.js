@@ -13,4 +13,4 @@ const date = new Date();
 const member = new Member("한슬", 123);
 
 
-console.log(member.getName())
+console.log(member.getName());
